@@ -1,0 +1,252 @@
+.questionnaireBodyEachQuestionBox {
+  height: auto;
+  background-color: var(--background-primary);
+
+  border-bottom: var(--border-bottom);
+  box-shadow: var(--shadow-box);
+}
+
+.questionnaireBodyEachQuestionBox .questionnaireBodyEachQuestionCover {
+  padding: var(--padding-primary);
+}
+
+.questionnaireBodyEachQuestionInside {
+  padding-bottom: var(--padding-primary);
+  border-bottom: var(--border-bottom);
+}
+
+.questionnaireBodyEachQuestionInside .noCheckedChoiceErrorMessage {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  font-family: var(--font-family);
+  color: var(--color-error);
+
+  padding-bottom: var(--padding-primary);
+}
+
+/* Question Number & TitleInput */
+.questionnaireBodyEachQuestionNumber {
+  padding-bottom: 20px;
+}
+
+.questionnaireBodyEachQuestionTitleInput {
+  padding-bottom: var(--padding-primary);
+}
+
+.questionnaireBodyEachQuestionTitleInput .MuiTextField-root {
+  width: 100%;
+}
+
+.questionnaireBodyEachQuestionTitleInput
+  .MuiTextField-root
+  .MuiOutlinedInput-root {
+  height: var(--height-primary);
+  border-radius: var(--border-radius);
+}
+
+/* Input Label */
+.questionnaireBodyEachQuestionTitleInput
+  .MuiTextField-root
+  .MuiInputLabel-root {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  font-family: var(--font-family);
+
+  color: var(--color-secondary-text);
+}
+
+/* Border */
+
+/* Normal */
+.questionnaireBodyEachQuestionTitleInput
+  .MuiTextField-root
+  .MuiOutlinedInput-root
+  fieldset {
+  border-color: var(--color-secondary-text);
+}
+
+/* Focus */
+.questionnaireBodyEachQuestionTitleInput
+  .MuiTextField-root
+  .MuiOutlinedInput-root.Mui-focused
+  fieldset {
+  border-color: var(--color-secondary-text);
+}
+
+/* Error */
+
+.questionnaireBodyEachQuestionTitleInput > .MuiTextField-root > .Mui-error {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+
+  margin-left: 0;
+
+  color: var(--color-error);
+}
+
+.questionnaireBodyEachQuestionTitleInput
+  .MuiTextField-root
+  .MuiInputLabel-root
+  .Mui-error {
+  color: var(--color-error);
+}
+
+.questionnaireBodyEachQuestionTitleInput
+  .MuiTextField-root
+  .MuiOutlinedInput-root.Mui-error
+  fieldset {
+  border-color: var(--color-error);
+}
+
+/* Add Choice Button */
+.questionnaireBodyEachQuestionAddButton > .MuiButton-root {
+  height: 22px;
+
+  color: var(--color-highlight);
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  padding: 0;
+}
+
+/* Whole Question Button */
+
+.questionnaireBodyEachQuestionButtons {
+  width: 100%;
+
+  padding-top: var(--padding-primary);
+
+  display: flex;
+}
+
+.questionnaireBodyEachQuestionButtons
+  .duplicateWholeQuestionButton
+  > .MuiButton-root,
+.questionnaireBodyEachQuestionButtons
+  .deleteWholeQuestionButton
+  > .MuiButton-root {
+  border-radius: 8px;
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+
+  width: 100%;
+  height: 100%;
+
+  font-family: var(--font-family);
+
+  padding-top: 0;
+  padding-bottom: 0;
+
+  color: var(--color-common-black);
+}
+
+.questionnaireBodyEachQuestionButtons
+  .duplicateWholeQuestionButton
+  > .MuiButton-root {
+  padding-right: 29px;
+}
+
+.duplicateWholeQuestionButton .MuiButton-root .MuiButton-startIcon {
+  margin-right: 11px;
+}
+
+.deleteWholeQuestionButton .MuiButton-root .MuiButton-startIcon {
+  margin-right: 13px;
+}
+
+/* List of Each Choice */
+.questionnaireBodyEachQuestionChoices .eachChoiceBox {
+  height: 64px;
+  padding-bottom: var(--padding-primary);
+}
+.questionnaireBodyEachQuestionChoices .eachChoice {
+  height: var(--height-primary);
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+/* Each Choice */
+
+/* TextField */
+.eachChoice .MuiTextField-root {
+  width: 100%;
+}
+
+.eachChoice .MuiTextField-root .MuiOutlinedInput-root {
+  height: var(--height-primary);
+  border-radius: var(--border-radius);
+}
+
+/* Input Label */
+.eachChoice .MuiTextField-root .MuiInputLabel-root {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  font-family: var(--font-family);
+
+  color: var(--color-secondary-text);
+}
+
+/* Border */
+
+/* Normal */
+.eachChoice .MuiTextField-root .MuiOutlinedInput-root fieldset {
+  border-color: var(--color-secondary-text);
+}
+
+/* Focus */
+.eachChoice .MuiTextField-root .MuiOutlinedInput-root.Mui-focused fieldset {
+  border-color: var(--color-secondary-text);
+}
+
+/* Error */
+
+.eachChoice > .MuiTextField-root > .Mui-error {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+
+  margin-left: 0;
+
+  color: var(--color-error) !important;
+}
+
+.eachChoice .MuiTextField-root .MuiInputLabel-root .Mui-error {
+  color: var(--color-error) !important;
+}
+
+.eachChoice .MuiTextField-root .MuiOutlinedInput-root.Mui-error fieldset {
+  border-color: var(--color-error) !important;
+}
+
+/* helper text Checked */
+.eachChoice .MuiTextField-root .MuiFormHelperText-root {
+  margin-left: 0;
+  color: var(--color-common-black);
+}
+
+/* Checked Box */
+.eachChoice .Mui-checked {
+  color: var(--color-checked);
+}
+
+/* Choice Delete Button */
+.deleteEachChoiceButton .MuiButton-root {
+  height: 100%;
+  color: var(--color-common-black);
+}

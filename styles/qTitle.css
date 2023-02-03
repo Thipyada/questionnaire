@@ -1,0 +1,77 @@
+.questionnaireBodyTitleBox {
+  height: 144px;
+
+  background-color: var(--background-primary);
+
+  border-bottom: var(--border-bottom);
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  box-shadow: var(--shadow-box);
+}
+
+.questionnaireBodyTitleBox .questionnaireBodyTitleCover {
+  padding: var(--padding-primary);
+}
+
+.questionnaireBodyTitle {
+  padding-bottom: var(--padding-primary);
+}
+
+.questionnaireBodyInputTitle .MuiTextField-root {
+  width: 100%;
+}
+
+.questionnaireBodyInputTitle .MuiTextField-root .MuiOutlinedInput-root {
+  height: var(--height-primary);
+  border-radius: var(--border-radius);
+}
+
+.questionnaireBodyInputTitle .MuiTextField-root .MuiInputLabel-root {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  font-family: var(--font-family);
+
+  color: var(--color-secondary-text);
+
+  padding-bottom: var(--padding-primary);
+}
+
+.questionnaireBodyInputTitle
+  .MuiTextField-root
+  .MuiOutlinedInput-root
+  fieldset {
+  border-color: var(--color-secondary-text);
+}
+
+/* Focus */
+.questionnaireBodyInputTitle
+  .MuiTextField-root
+  .MuiOutlinedInput-root.Mui-focused
+  fieldset {
+  border-color: var(--color-secondary-text) !important;
+}
+
+/* Error */
+
+.questionnaireBodyInputTitle > .MuiTextField-root > .Mui-error {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+
+  margin-left: 0;
+
+  color: var(--color-error);
+}
+
+.questionnaireBodyInputTitle .MuiTextField-root .MuiInputLabel-root .Mui-error {
+  color: var(--color-error);
+}
+
+.questionnaireBodyInputTitle
+  .MuiTextField-root
+  .MuiOutlinedInput-root.Mui-error
+  fieldset {
+  border-color: var(--color-error);
+}

@@ -1,0 +1,27 @@
+.questionnaireBodyAddButtonBox {
+  height: 96px;
+
+  background-color: var(--background-primary);
+
+  border-bottom: var(--border-bottom);
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  box-shadow: var(--shadow-box);
+}
+
+.questionnaireBodyAddButtonBox .questionnaireBodyAddButtonCover {
+  padding: var(--padding-primary);
+}
+
+.questionnaireBodyAddButton > .MuiButton-root {
+  width: 100%;
+  height: var(--height-primary);
+
+  border-radius: var(--border-radius);
+  color: var(--color-highlight);
+  border: 1px solid var(--color-highlight);
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+}
