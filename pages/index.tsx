@@ -15,6 +15,7 @@ import { useState } from 'react';
 import Checkbox from '@mui/material/Checkbox';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
+import { ChildProcess } from 'child_process';
 
 export default function Home() {
   // create uniques Id
@@ -31,7 +32,7 @@ export default function Home() {
   const eachChoice = {
     choiceDetail: '',
     errorChoiceDetail: false,
-    checked: false,
+    checked: true,
     choiceId: generateId()
   }
 
@@ -94,6 +95,11 @@ export default function Home() {
 
       const dupObject = listQuestion[dupIndex]
       const dupObjectWithNewId = { ...dupObject, questionId: generateId() }
+      const allNewChoiceId = dupObjectWithNewId.allQuestionDetail.map((choice) => {
+        return { ...choice, choiceId: generateId() }
+      })
+
+      dupObjectWithNewId.allQuestionDetail = allNewChoiceId
 
       const newListQuestion = [...listQuestion];
 
@@ -105,7 +111,7 @@ export default function Home() {
 
   const handleDeleteQuestionClick = (deleteID: string) => {
     setAllQuestion((prevAllQuestion) => {
-      return prevAllQuestion.filter((item) => item.questionId !== deleteID)
+      return allQuestion.filter((item) => item.questionId !== deleteID)
     })
   }
 
@@ -117,7 +123,7 @@ export default function Home() {
 
       return prevAllQuestion.map((item, idx) => {
         if (questionIndex === idx) {
-          const newChoice = { ...eachChoice, choiceId: generateId() }
+          const newChoice = { ...eachChoice, choiceId: generateId(), checked: false }
           return {
             ...prevAllQuestion[questionIndex],
             allQuestionDetail: [
@@ -140,9 +146,27 @@ export default function Home() {
         return object.questionId === questionID;
       });
 
+      const choiceIndex = prevAllQuestion[questionIndex].allQuestionDetail.findIndex(object => {
+        return object.choiceId === choiceID
+      })
+
       const remainingChoice = prevAllQuestion[questionIndex].allQuestionDetail.filter((item) => item.choiceId !== choiceID)
+      // const deleteChoice = prevAllQuestion[questionIndex].allQuestionDetail.filter((item) => item.choiceId == choiceID)
 
       prevAllQuestion[questionIndex].allQuestionDetail = remainingChoice
+
+      const newSetOfChoice = prevAllQuestion[questionIndex].allQuestionDetail
+
+      const checkNewSetOfChoice = newSetOfChoice.find(choice => choice.checked)
+      if (!checkNewSetOfChoice) {
+        if (choiceIndex === 0) {
+          newSetOfChoice[choiceIndex].checked = true
+        } else {
+          newSetOfChoice[choiceIndex - 1].checked = true
+        }
+      }
+
+      // console.log('newsetofchoice', checkNewSetOfChoice)
 
       return prevAllQuestion
     });
@@ -160,8 +184,8 @@ export default function Home() {
 
       const findCheckedChoice = allChoice.map((choice) => {
         if (choice.choiceId === choiceID) {
-          if (choice.checked === true) {
-            return { ...choice, checked: false };
+          if (choice.checked) {
+            return { ...choice, checked: true };
           } else {
             return { ...choice, checked: true };
           }
@@ -318,13 +342,10 @@ export default function Home() {
     }
   }
 
-  // Submit
-  const handleSaveClick = () => {
-    const validateResult = validate()
-
+  // CheckCheckedChoice
+  const checkCheckedChoice = () => {
     let errorFound = false;
 
-    // Check the checked choice in each question
     const updatedQuestion = allQuestion.map(question => {
       const checkedChoice = question.allQuestionDetail.find(choice => choice.checked);
       if (!checkedChoice) {
@@ -334,15 +355,24 @@ export default function Home() {
       return { ...question, errorCheckedChoice: false };
     });
 
+    setAllQuestion(updatedQuestion);
+    return errorFound;
+  }
 
-    if (validateResult === true && errorFound === false) {
-      setSaveValid(true)
-      console.log('completeQuestionnaire', questionnaire)
+  // Submit
+  const handleSaveClick = () => {
+    const validateResult = validate()
+    const validateChoice = checkCheckedChoice();
+
+    if (validateResult === true && validateChoice === false) {
+      setSaveValid(true);
+      console.log('completeQuestionnaire', questionnaire);
     } else {
-      setSaveValid(false)
-      setAllQuestion(updatedQuestion);
+      setSaveValid(false);
     }
   }
+
+
 
   // Cancel
   const handleCancelClick = () => {
@@ -361,7 +391,7 @@ export default function Home() {
 
   // console.log('eachChoice', eachChoice)
   // console.log('eachQuestion', eachQuestion)
-  // console.log('allQuestion', allQuestion)
+  console.log('allQuestion', allQuestion)
   // console.log('questionnaireName', questionnaireName)
   // console.log('questionnaire', questionnaire)
 
@@ -464,7 +494,6 @@ export default function Home() {
 
                   {question.errorCheckedChoice && <div className="noCheckedChoiceErrorMessage">Please select at least one choice</div>}
 
-
                   {question.allQuestionDetail.map((choice, idx) => (
                     <div className="eachChoiceBox" key={idx}>
                       <div className='eachChoice'>
@@ -486,13 +515,15 @@ export default function Home() {
                           helperText={helperText(choice.checked, choice.errorChoiceDetail)}
                         ></TextField>
 
-                        <div className="deleteEachChoiceButton">
-                          <Button
-                            onClick={() => handleDeleteChoice(choice.choiceId, question.questionId)}
-                          >
-                            <DeleteOutlineIcon />
-                          </Button>
-                        </div>
+                        {question.allQuestionDetail.length > 1 && (
+                          <div className="deleteEachChoiceButton">
+                            <Button
+                              onClick={() => handleDeleteChoice(choice.choiceId, question.questionId)}
+                            >
+                              <DeleteOutlineIcon />
+                            </Button>
+                          </div>
+                        )}
                       </div>
                     </div>
                   ))}
@@ -519,14 +550,18 @@ export default function Home() {
                     Duplicate
                   </Button>
                 </div>
-                <div className="deleteWholeQuestionButton">
-                  <Button
-                    startIcon={<DeleteOutlineIcon />}
-                    onClick={() => handleDeleteQuestionClick(question.questionId)}
-                  >
-                    Delete
-                  </Button>
-                </div>
+
+                {allQuestion.length > 1 && (
+                  <div className="deleteWholeQuestionButton">
+                    <Button
+                      startIcon={<DeleteOutlineIcon />}
+                      onClick={() => handleDeleteQuestionClick(question.questionId)}
+                    >
+                      Delete
+                    </Button>
+                  </div>
+                )}
+
               </div>
             </div>
           </Box>

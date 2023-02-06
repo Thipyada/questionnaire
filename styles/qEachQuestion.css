@@ -82,7 +82,7 @@
 .questionnaireBodyEachQuestionTitleInput > .MuiTextField-root > .Mui-error {
   font-style: normal;
   font-weight: 400;
-  font-size: 12px;
+  /* font-size: 12px; */
   line-height: 16px;
 
   margin-left: 0;
@@ -218,7 +218,7 @@
 .eachChoice > .MuiTextField-root > .Mui-error {
   font-style: normal;
   font-weight: 400;
-  font-size: 12px;
+  /* font-size: 12px; */
   line-height: 16px;
 
   margin-left: 0;
