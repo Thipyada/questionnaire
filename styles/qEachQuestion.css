@@ -237,7 +237,7 @@
 /* helper text Checked */
 .eachChoice .MuiTextField-root .MuiFormHelperText-root {
   margin-left: 0;
-  color: var(--color-common-black) !important;
+  color: var(--color-common-black);
 }
 
 /* Checked Box */
@@ -248,5 +248,5 @@
 /* Choice Delete Button */
 .deleteEachChoiceButton .MuiButton-root {
   height: 100%;
-  color: var(--color-common-black) !important;
+  color: var(--color-common-black);
 }
