@@ -237,16 +237,16 @@
 /* helper text Checked */
 .eachChoice .MuiTextField-root .MuiFormHelperText-root {
   margin-left: 0;
-  color: var(--color-common-black);
+  color: var(--color-common-black) !important;
 }
 
 /* Checked Box */
 .eachChoice .Mui-checked {
-  color: var(--color-checked);
+  color: var(--color-checked) !important;
 }
 
 /* Choice Delete Button */
 .deleteEachChoiceButton .MuiButton-root {
   height: 100%;
-  color: var(--color-common-black);
+  color: var(--color-common-black) !important;
 }
