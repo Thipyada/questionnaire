@@ -1,7 +1,7 @@
 import '@/styles/globals.css'
 import '@/styles/home.css'
 import '@/styles/header.css'
-import '@/styles/qtitle.css'
+import '@/styles/qTitle.css'
 import '@/styles/qAddButton.css'
 import '@/styles/qEachQuestion.css'
 
