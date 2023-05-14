@@ -15,6 +15,7 @@ import { useState } from 'react';
 import Checkbox from '@mui/material/Checkbox';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
+import Antmin from '../index'
 
 export default function Home() {
   // create uniques Id
@@ -387,6 +388,16 @@ export default function Home() {
     setSaveValid(false)
   };
 
+  const FirebaseKey = {
+    apiKey: process.env.NESXT_PUBLIC_API_KEY,
+    authDomain: process.env.NEXT_PUBLIC_AUTH_DOMAIN,
+    projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
+    storageBucket: process.env.NEXT_PUBLIC_STORAGE_BUCKET,
+    messagingSenderId: process.env.NEXT_PUBLIC_MESSAGING_SENDER_ID,
+    appId: process.env.NEXT_PUBLIC_APP_ID,
+    measurementId: process.env.NEXT_PUBLIC_MEASUREMENT_ID,
+  }
+
 
   // console.log('eachChoice', eachChoice)
   // console.log('eachQuestion', eachQuestion)
@@ -401,6 +412,8 @@ export default function Home() {
           Foxbith Questionnaire
         </title>
       </Head>
+
+      <Antmin firebaseKey={FirebaseKey} />
 
       {/* Alert Submit Successful */}
       <Snackbar open={saveValid} autoHideDuration={6000} onClose={handleClose} >
