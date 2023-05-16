@@ -422,179 +422,180 @@ export default function Home() {
         </Alert>
       </Snackbar >
 
-
-      {/* Qheader */}
-      <header>
-        <div className="questionnaireHeaderTitle">
-          <div className="foxIcon">
-            <img
-              src='/images/fox-face_1f98a.png'
-            />
-          </div>
-          <h5>Foxbith Questionnaire</h5>
-        </div>
-        <div className="questionnaireHeaderButton">
-          <div className="cancelButton">
-            <Button
-              variant='outlined'
-              onClick={handleCancelClick}
-            >
-              cancel
-            </Button>
-          </div>
-          <div className="saveButton">
-            <Button
-              variant='contained'
-              onClick={handleSaveClick}
-            >
-              save
-            </Button>
-          </div>
-        </div>
-      </header>
-
-
-      <div className="questionnaireBox">
-
-        {/* QBodyQuestionTitle */}
-        <Box className="questionnaireBodyTitleBox">
-          <div className="questionnaireBodyTitleCover">
-            <div className="questionnaireBodyTitle">
-              <h6>Questionnaire Detail</h6>
+      <div>
+        {/* Qheader */}
+        <header>
+          <div className="questionnaireHeaderTitle">
+            <div className="foxIcon">
+              <img
+                src='/images/fox-face_1f98a.png'
+              />
             </div>
-
-            <div className="questionnaireBodyInputTitle">
-              <TextField
-                label='Name'
-                variant='outlined'
-                value={questionnaire.questionnaireName}
-                required
-                onChange={(e) => handleQuestionnaireNameChange(e.target.value)}
-                error={questionnaire.errorQuestionnaireName}
-                helperText={questionnaire.errorQuestionnaireName ? 'Please fill in this option' : ' '}
-              ></TextField>
-            </div>
+            <h5>Foxbith Questionnaire</h5>
           </div>
-        </Box>
-
-        {/* QBodyQuestionEach */}
-        {allQuestion.map((question, index) => (
-          <Box className="questionnaireBodyEachQuestionBox" key={index}>
-            <div className="questionnaireBodyEachQuestionCover">
-              <div className="questionnaireBodyEachQuestionInside">
-
-                <div className="questionnaireBodyEachQuestionNumber">
-                  <h6>Question {index + 1}</h6>
-                </div>
-
-                <div className="questionnaireBodyEachQuestionTitleInput">
-                  <TextField
-                    label='Name'
-                    variant='outlined'
-                    name='questionName'
-                    value={question.questionName}
-                    required
-                    onChange={(e) => handleQuestionNameChange(question.questionId, e.target.value)}
-                    error={question.errorQuestionName}
-                    helperText={question.errorQuestionName ? 'Please fill in this option' : ''}
-                  ></TextField>
-                </div>
-
-                <div className="questionnaireBodyEachQuestionChoices">
-
-                  {/* <QBodyEachQuestionChoices/> */}
-
-                  {question.errorCheckedChoice && <div className="noCheckedChoiceErrorMessage">Please select at least one choice</div>}
-
-                  {question.allQuestionDetail.map((choice, idx) => (
-                    <div className="eachChoiceBox" key={idx}>
-                      <div className='eachChoice'>
-                        <Checkbox
-                          icon={<RadioButtonUncheckedIcon />}
-                          checkedIcon={<CheckCircleIcon />}
-                          checked={choice.checked}
-                          onClick={() => handleClickChecked(choice.choiceId, question.questionId)}
-                          inputProps={{ "aria-label": "primary checkbox" }}
-                        />
-                        <TextField
-                          label='Description'
-                          variant='outlined'
-                          name='choiceDetail'
-                          value={choice.choiceDetail}
-                          required
-                          onChange={(e) => handleDetailChange(e.target.value, choice.choiceId, question.questionId)}
-                          error={choice.errorChoiceDetail}
-                          helperText={helperText(choice.checked, choice.errorChoiceDetail)}
-                        ></TextField>
-
-                        {question.allQuestionDetail.length > 1 && (
-                          <div className="deleteEachChoiceButton">
-                            <Button
-                              onClick={() => handleDeleteChoice(choice.choiceId, question.questionId)}
-                            >
-                              <DeleteOutlineIcon />
-                            </Button>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-
-                </div>
-
-
-                <div className="questionnaireBodyEachQuestionAddButton">
-                  <Button
-                    startIcon={<AddIcon />}
-                    onClick={() => handleAddChoiceClick(question.questionId)}
-                  >
-                    Add Choice
-                  </Button>
-                </div>
-              </div>
-
-              <div className="questionnaireBodyEachQuestionButtons">
-                <div className="duplicateWholeQuestionButton">
-                  <Button
-                    startIcon={<ContentCopyIcon />}
-                    onClick={() => handleDuplicateQuestionClick(question.questionId)}
-                  >
-                    Duplicate
-                  </Button>
-                </div>
-
-                {allQuestion.length > 1 && (
-                  <div className="deleteWholeQuestionButton">
-                    <Button
-                      startIcon={<DeleteOutlineIcon />}
-                      onClick={() => handleDeleteQuestionClick(question.questionId)}
-                    >
-                      Delete
-                    </Button>
-                  </div>
-                )}
-
-              </div>
-            </div>
-          </Box>
-        ))}
-
-
-        {/* QBodyAddQuestionButton */}
-        <Box className="questionnaireBodyAddButtonBox">
-          <div className="questionnaireBodyAddButtonCover">
-            <div className="questionnaireBodyAddButton">
+          <div className="questionnaireHeaderButton">
+            <div className="cancelButton">
               <Button
                 variant='outlined'
-                startIcon={<AddIcon />}
-                onClick={handleAddQuestionClick}
+                onClick={handleCancelClick}
               >
-                Add Question
+                cancel
+              </Button>
+            </div>
+            <div className="saveButton">
+              <Button
+                variant='contained'
+                onClick={handleSaveClick}
+              >
+                save
               </Button>
             </div>
           </div>
-        </Box>
+        </header>
 
+
+        <div className="questionnaireBox">
+
+          {/* QBodyQuestionTitle */}
+          <Box className="questionnaireBodyTitleBox">
+            <div className="questionnaireBodyTitleCover">
+              <div className="questionnaireBodyTitle">
+                <h6>Questionnaire Detail</h6>
+              </div>
+
+              <div className="questionnaireBodyInputTitle">
+                <TextField
+                  label='Name'
+                  variant='outlined'
+                  value={questionnaire.questionnaireName}
+                  required
+                  onChange={(e) => handleQuestionnaireNameChange(e.target.value)}
+                  error={questionnaire.errorQuestionnaireName}
+                  helperText={questionnaire.errorQuestionnaireName ? 'Please fill in this option' : ' '}
+                ></TextField>
+              </div>
+            </div>
+          </Box>
+
+          {/* QBodyQuestionEach */}
+          {allQuestion.map((question, index) => (
+            <Box className="questionnaireBodyEachQuestionBox" key={index}>
+              <div className="questionnaireBodyEachQuestionCover">
+                <div className="questionnaireBodyEachQuestionInside">
+
+                  <div className="questionnaireBodyEachQuestionNumber">
+                    <h6>Question {index + 1}</h6>
+                  </div>
+
+                  <div className="questionnaireBodyEachQuestionTitleInput">
+                    <TextField
+                      label='Name'
+                      variant='outlined'
+                      name='questionName'
+                      value={question.questionName}
+                      required
+                      onChange={(e) => handleQuestionNameChange(question.questionId, e.target.value)}
+                      error={question.errorQuestionName}
+                      helperText={question.errorQuestionName ? 'Please fill in this option' : ''}
+                    ></TextField>
+                  </div>
+
+                  <div className="questionnaireBodyEachQuestionChoices">
+
+                    {/* <QBodyEachQuestionChoices/> */}
+
+                    {question.errorCheckedChoice && <div className="noCheckedChoiceErrorMessage">Please select at least one choice</div>}
+
+                    {question.allQuestionDetail.map((choice, idx) => (
+                      <div className="eachChoiceBox" key={idx}>
+                        <div className='eachChoice'>
+                          <Checkbox
+                            icon={<RadioButtonUncheckedIcon />}
+                            checkedIcon={<CheckCircleIcon />}
+                            checked={choice.checked}
+                            onClick={() => handleClickChecked(choice.choiceId, question.questionId)}
+                            inputProps={{ "aria-label": "primary checkbox" }}
+                          />
+                          <TextField
+                            label='Description'
+                            variant='outlined'
+                            name='choiceDetail'
+                            value={choice.choiceDetail}
+                            required
+                            onChange={(e) => handleDetailChange(e.target.value, choice.choiceId, question.questionId)}
+                            error={choice.errorChoiceDetail}
+                            helperText={helperText(choice.checked, choice.errorChoiceDetail)}
+                          ></TextField>
+
+                          {question.allQuestionDetail.length > 1 && (
+                            <div className="deleteEachChoiceButton">
+                              <Button
+                                onClick={() => handleDeleteChoice(choice.choiceId, question.questionId)}
+                              >
+                                <DeleteOutlineIcon />
+                              </Button>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+
+                  </div>
+
+
+                  <div className="questionnaireBodyEachQuestionAddButton">
+                    <Button
+                      startIcon={<AddIcon />}
+                      onClick={() => handleAddChoiceClick(question.questionId)}
+                    >
+                      Add Choice
+                    </Button>
+                  </div>
+                </div>
+
+                <div className="questionnaireBodyEachQuestionButtons">
+                  <div className="duplicateWholeQuestionButton">
+                    <Button
+                      startIcon={<ContentCopyIcon />}
+                      onClick={() => handleDuplicateQuestionClick(question.questionId)}
+                    >
+                      Duplicate
+                    </Button>
+                  </div>
+
+                  {allQuestion.length > 1 && (
+                    <div className="deleteWholeQuestionButton">
+                      <Button
+                        startIcon={<DeleteOutlineIcon />}
+                        onClick={() => handleDeleteQuestionClick(question.questionId)}
+                      >
+                        Delete
+                      </Button>
+                    </div>
+                  )}
+
+                </div>
+              </div>
+            </Box>
+          ))}
+
+
+          {/* QBodyAddQuestionButton */}
+          <Box className="questionnaireBodyAddButtonBox">
+            <div className="questionnaireBodyAddButtonCover">
+              <div className="questionnaireBodyAddButton">
+                <Button
+                  variant='outlined'
+                  startIcon={<AddIcon />}
+                  onClick={handleAddQuestionClick}
+                >
+                  Add Question
+                </Button>
+              </div>
+            </div>
+          </Box>
+
+        </div>
       </div>
     </div >
   )
