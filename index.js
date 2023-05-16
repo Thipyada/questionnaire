@@ -111,6 +111,7 @@ var useStyles = (0, import_mui.makeStyles)()((theme) => ({
     borderRadius: 20,
     overflow: "hidden",
     opacity: 1,
+    zIndex: 999,
     // transform
     transformOrigin: "right bottom",
     transition: "width 200ms ease 0s, height 200ms ease 0s, max-height 200ms ease 0s, transform 300ms cubic-bezier(0, 1.2, 1, 1) 0s, opacity 83ms ease-out 0s",
@@ -221,6 +222,7 @@ var useStyles2 = (0, import_mui2.makeStyles)()((theme) => ({
     position: "fixed",
     bottom: 39,
     right: 38,
+    zIndex: 999,
     [theme.breakpoints.down("sm")]: {
       right: 16,
       bottom: 24
